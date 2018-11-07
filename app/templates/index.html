@@ -1,0 +1,58 @@
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+
+<!-- Styles block -->
+
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
+
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <!-- @app.route('/movie/<int:id>') -->
+            <!-- # def movie(id):
+            
+            #         '''
+            #         View movie page function that returns the movie details page and its data
+            #         '''
+            #         movie = get_movie(id)
+            #         title = f'{movie.title}'
+            
+            #         return render_template('movie.html',title = title,movie = movie) -->
+<!--             
+            
+        <h1>ggggg</h1>
+        <meta charset="utf-8"> -->
+        {% if title %}
+        <title> {{ title }}</title>
+        {% else %}
+        <title> Welcome to the best Movie Review website </title>
+        {% endif %}
+    </head>
+
+    <body>
+        {% block content %}
+
+        <!-- Popular movie -->
+        <h3> Popular Movies</h3>
+        <ul>
+            {{ macro.displayMovieList(popular)}}
+        </ul>
+        <!-- Upcoming movie  -->
+        <h3> Upcoming Movies </h3>
+        <ul>
+            {{ macro.displayMovieList(upcoming)}}
+        </ul>
+        <!-- Now showing movie -->
+        <h3>Now Showing</h3>
+        <ul>
+            {{ macro.displayMovieList(now_showing)}}
+        </ul>
+        
+        
+        {% endblock%}
+    </body>
+</html>
